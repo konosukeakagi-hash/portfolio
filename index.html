@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akagi Konosuke | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/globe.gl"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        border: "hsl(var(--border))",
+                        input: "hsl(var(--input))",
+                        ring: "hsl(var(--ring))",
+                        background: "hsl(var(--background))",
+                        foreground: "hsl(var(--foreground))",
+                        primary: {
+                            DEFAULT: "hsl(var(--primary))",
+                            foreground: "hsl(var(--primary-foreground))",
+                        },
+                        secondary: {
+                            DEFAULT: "hsl(var(--secondary))",
+                            foreground: "hsl(var(--secondary-foreground))",
+                        },
+                        destructive: {
+                            DEFAULT: "hsl(var(--destructive))",
+                            foreground: "hsl(var(--destructive-foreground))",
+                        },
+                        muted: {
+                            DEFAULT: "hsl(var(--muted))",
+                            foreground: "hsl(var(--muted-foreground))",
+                        },
+                        accent: {
+                            DEFAULT: "hsl(var(--accent))",
+                            foreground: "hsl(var(--accent-foreground))",
+                        },
+                        popover: {
+                            DEFAULT: "hsl(var(--popover))",
+                            foreground: "hsl(var(--popover-foreground))",
+                        },
+                        card: {
+                            DEFAULT: "hsl(var(--card))",
+                            foreground: "hsl(var(--card-foreground))",
+                        },
+                    },
+                    borderRadius: {
+                        lg: "var(--radius)",
+                        md: "calc(var(--radius) - 2px)",
+                        sm: "calc(var(--radius) - 4px)",
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --background: 240 10% 3.9%;
+            --foreground: 0 0% 98%;
+            --card: 240 10% 3.9%;
+            --card-foreground: 0 0% 98%;
+            --popover: 240 10% 3.9%;
+            --popover-foreground: 0 0% 98%;
+            --primary: 0 0% 98%;
+            --primary-foreground: 240 5.9% 10%;
+            --secondary: 240 3.7% 15.9%;
+            --secondary-foreground: 0 0% 98%;
+            --muted: 240 3.7% 15.9%;
+            --muted-foreground: 240 5% 64.9%;
+            --accent: 240 3.7% 15.9%;
+            --accent-foreground: 0 0% 98%;
+            --destructive: 0 62.8% 30.6%;
+            --destructive-foreground: 0 0% 98%;
+            --border: 240 3.7% 15.9%;
+            --input: 240 3.7% 15.9%;
+            --ring: 240 4.9% 83.9%;
+            --radius: 0.5rem;
+        }
+
+        .dark {
+            --background: 240 10% 3.9%;
+            --foreground: 0 0% 98%;
+            --card: 240 10% 3.9%;
+            --card-foreground: 0 0% 98%;
+            --popover: 240 10% 3.9%;
+            --popover-foreground: 0 0% 98%;
+            --primary: 0 0% 98%;
+            --primary-foreground: 240 5.9% 10%;
+            --secondary: 240 3.7% 15.9%;
+            --secondary-foreground: 0 0% 98%;
+            --muted: 240 3.7% 15.9%;
+            --muted-foreground: 240 5% 64.9%;
+            --accent: 240 3.7% 15.9%;
+            --accent-foreground: 0 0% 98%;
+            --destructive: 0 62.8% 30.6%;
+            --destructive-foreground: 0 0% 98%;
+            --border: 240 3.7% 15.9%;
+            --input: 240 3.7% 15.9%;
+            --ring: 240 4.9% 83.9%;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-transparent text-foreground antialiased min-h-screen flex flex-col relative">
+
+    <!-- Background Video & Overlay -->
+    <div class="fixed inset-0 -z-50 overflow-hidden">
+        <!-- 動画ファイル: images/background.mp4 を配置してください -->
+        <video id="bgVideo" autoplay loop muted playsinline class="absolute w-full h-full object-cover">
+            <source src="./images/background.mp4" type="video/mp4">
+        </video>
+        <!-- 透過オーバーレイ: 動画の上に半透明の背景色を重ねて文字を読みやすくします -->
+        <div class="absolute inset-0 bg-background/70 backdrop-blur-[2px]"></div>
+    </div>
+
+    <!-- Header -->
+    <header
+        class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div class="container mx-auto px-4 h-14 flex items-center justify-between max-w-screen-xl">
+            <div class="font-bold text-lg tracking-tight">Akagi Konosuke</div>
+            <nav class="flex gap-4 text-sm font-medium text-muted-foreground">
+                <a href="#gallery" class="hover:text-foreground transition-colors">Gallery</a>
+                <a href="#globe" class="hover:text-foreground transition-colors">Movement Map</a>
+                <a href=".ride-across-japan" class="hover:text-foreground transition-colors">Ride Across Japan</a>
+                <a href="#timeline" class="hover:text-foreground transition-colors">History</a>
+                <a href="#about" class="hover:text-foreground transition-colors">About</a>
+                <a href="#contact" class="hover:text-foreground transition-colors">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-1">
+        <!-- Hero Section -->
+        <section class="relative py-24 lg:py-32 overflow-hidden">
+            <div class="container mx-auto px-4 relative z-10 max-w-screen-xl">
+                <div class="flex flex-col items-center text-center space-y-8">
+                    <div
+                        class="relative w-32 h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden border-4 border-background shadow-xl">
+                        <img src="./images/profile.jpg" alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                    <div class="space-y-4 max-w-3xl">
+                        <h1 class="text-4xl lg:text-6xl font-extrabold tracking-tight text-primary">
+                            Capturing Life's <span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">Moments</span>
+                        </h1>
+                        <p class="text-xl text-muted-foreground leading-relaxed">
+                            Akagi Konosuke | Salesforce Sales<br>
+                            Tokyo-based. Driven by momentum and human connection.
+                        </p>
+                    </div>
+                    <div class="flex gap-4 pt-4">
+                        <a href="https://www.instagram.com/akagi_desu?igsh=MWk1OWY0bXhtMXdxcA%3D%3D&utm_source=qr"
+                            target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 px-8">
+                            Follow on Instagram
+                        </a>
+                        <a href="https://www.linkedin.com/in/konosuke-akagi-a85049234" target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 px-8">
+                            Connect on LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Background decoration -->
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-3xl -z-10 pointer-events-none">
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-16 bg-secondary/30">
+            <div class="container mx-auto px-4 max-w-screen-xl">
+                <div class="flex flex-col items-center mb-12 space-y-2">
+                    <h2 class="text-3xl font-bold tracking-tight">Latest Shots</h2>
+                    <p class="text-muted-foreground">Curated from @akagi_desu</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                    <!-- Gallery Item 1 -->
+                    <div
+                        class="group relative aspect-square overflow-hidden rounded-xl bg-muted shadow-sm hover:shadow-md transition-all duration-300">
+                        <img src="./images/DSCF2902.jpg" alt="Gallery 1"
+                            class="gallery-image object-cover w-full h-full transition-transform duration-500 group-hover:scale-105 opacity-100 transition-opacity duration-[2000ms]">
+                        <div
+                            class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span class="text-white font-medium">View Post</span>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 2 -->
+                    <div
+                        class="group relative aspect-square overflow-hidden rounded-xl bg-muted shadow-sm hover:shadow-md transition-all duration-300">
+                        <img src="./images/DSCF2913.JPG" alt="Gallery 2"
+                            class="gallery-image object-cover w-full h-full transition-transform duration-500 group-hover:scale-105 opacity-100 transition-opacity duration-[2000ms]">
+                        <div
+                            class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span class="text-white font-medium">View Post</span>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 3 -->
+                    <div
+                        class="group relative aspect-square overflow-hidden rounded-xl bg-muted shadow-sm hover:shadow-md transition-all duration-300">
+                        <img src="./images/IMG_1332.JPG" alt="Gallery 3"
+                            class="gallery-image object-cover w-full h-full transition-transform duration-500 group-hover:scale-105 opacity-100 transition-opacity duration-[2000ms]">
+                        <div
+                            class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span class="text-white font-medium">View Post</span>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 4 -->
+                    <div
+                        class="group relative aspect-square overflow-hidden rounded-xl bg-muted shadow-sm hover:shadow-md transition-all duration-300">
+                        <img src="./images/IMG_1502.JPG" alt="Gallery 4"
+                            class="gallery-image object-cover w-full h-full transition-transform duration-500 group-hover:scale-105 opacity-100 transition-opacity duration-[2000ms]">
+                        <div
+                            class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span class="text-white font-medium">View Post</span>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 5 -->
+                    <div
+                        class="group relative aspect-square overflow-hidden rounded-xl bg-muted shadow-sm hover:shadow-md transition-all duration-300">
+                        <img src="./images/IMG_3365.jpg" alt="Gallery 5"
+                            class="gallery-image object-cover w-full h-full transition-transform duration-500 group-hover:scale-105 opacity-100 transition-opacity duration-[2000ms]">
+                        <div
+                            class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span class="text-white font-medium">View Post</span>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 6 -->
+                    <div
+                        class="group relative aspect-square overflow-hidden rounded-xl bg-muted shadow-sm hover:shadow-md transition-all duration-300">
+                        <img src="./images/IMG_3728.jpg" alt="Gallery 6"
+                            class="gallery-image object-cover w-full h-full transition-transform duration-500 group-hover:scale-105 opacity-100 transition-opacity duration-[2000ms]">
+                        <div
+                            class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span class="text-white font-medium">View Post</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24">
+            <div class="container mx-auto px-4 max-w-screen-md text-center space-y-8">
+                <h2 class="text-3xl font-bold tracking-tight">About Me</h2>
+                <p class="text-lg text-muted-foreground leading-relaxed">
+                    My name is Konosuke.<br>
+                    I work in the tech industry, but my identity isn't shaped by titles or roles—it's shaped by
+                    momentum.<br><br>
+                    I love movement. It's the subtle feeling of progress:<br>
+                    when you're walking, traveling, commuting…<br>
+                    you're not doing anything remarkable, yet you're quietly approaching your destination.<br>
+                    That sensation reminds me of how I want to live.<br>
+                    never standing still, always moving toward a life worth living.
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8">
+                    <div class="flex flex-col items-center space-y-2">
+                        <span id="daysAlive" class="text-3xl font-bold text-primary">0</span>
+                        <span class="text-sm text-muted-foreground">Days Alive</span>
+                    </div>
+                    <div class="flex flex-col items-center space-y-2">
+                        <span id="age" class="text-3xl font-bold text-primary">0</span>
+                        <span class="text-sm text-muted-foreground">Years Old</span>
+                    </div>
+                    <div class="flex flex-col items-center space-y-2">
+                        <span class="text-3xl font-bold text-primary">5</span>
+                        <span class="text-sm text-muted-foreground">Years Exp.</span>
+                    </div>
+                    <div class="flex flex-col items-center space-y-2">
+                        <span class="text-3xl font-bold text-primary">JP</span>
+                        <span class="text-sm text-muted-foreground">Based</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Globe & Movement Section -->
+        <section id="globe" class="py-24 relative">
+            <div class="container mx-auto px-4 max-w-screen-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+                    <!-- Left: Globe -->
+                    <div class="relative order-2 lg:order-1">
+                        <div id="globeViz"
+                            class="w-full h-[500px] lg:h-[600px] rounded-2xl overflow-hidden bg-black/20 shadow-2xl border border-white/5">
+                        </div>
+                        <!-- Decorative glow behind globe -->
+                        <div class="absolute -inset-4 bg-teal-500/10 blur-3xl -z-10 rounded-full opacity-50"></div>
+                    </div>
+
+                    <!-- Right: Info -->
+                    <div class="order-1 lg:order-2 space-y-12">
+
+                        <!-- Header -->
+                        <div class="space-y-2">
+                            <h2 class="text-sm font-medium text-teal-400 tracking-widest uppercase">Movement Map</h2>
+                            <div class="flex items-baseline gap-4">
+                                <span class="text-6xl md:text-7xl font-bold text-white tracking-tight">26</span>
+                                <span class="text-xl text-muted-foreground font-light">Countries Visited</span>
+                            </div>
+                        </div>
+
+                        <!-- Region Lists -->
+                        <div class="space-y-8">
+
+                            <!-- Asia -->
+                            <div class="space-y-3">
+                                <h3 class="text-sm text-gray-500 font-medium tracking-wide">Asia</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="country-chip">Japan</span>
+                                    <span class="country-chip">Thailand</span>
+                                    <span class="country-chip">India</span>
+                                    <span class="country-chip">Philippines</span>
+                                    <span class="country-chip">Laos</span>
+                                </div>
+                            </div>
+
+                            <!-- Europe -->
+                            <div class="space-y-3">
+                                <h3 class="text-sm text-gray-500 font-medium tracking-wide">Europe</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="country-chip">Italy</span>
+                                    <span class="country-chip">Greece</span>
+                                    <span class="country-chip">Germany</span>
+                                    <span class="country-chip">France</span>
+                                    <span class="country-chip">Finland</span>
+                                    <span class="country-chip">Hungary</span>
+                                    <span class="country-chip">Czech Republic</span>
+                                    <span class="country-chip">Belgium</span>
+                                    <span class="country-chip">Netherlands</span>
+                                    <span class="country-chip">Spain</span>
+                                    <span class="country-chip">Malta</span>
+                                    <span class="country-chip">Vatican</span>
+                                    <span class="country-chip">Switzerland</span>
+                                </div>
+                            </div>
+
+                            <!-- Americas -->
+                            <div class="space-y-3">
+                                <h3 class="text-sm text-gray-500 font-medium tracking-wide">Americas</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="country-chip">Bolivia</span>
+                                    <span class="country-chip">Peru</span>
+                                </div>
+                            </div>
+
+                            <!-- Pacific -->
+                            <div class="space-y-3">
+                                <h3 class="text-sm text-gray-500 font-medium tracking-wide">Pacific</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="country-chip">Guam</span>
+                                    <span class="country-chip">Hawaii</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <style>
+            .country-chip {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-size: 0.8rem;
+                /* 12-13px */
+                color: #e5e7eb;
+                /* gray-200 */
+                background: rgba(255, 255, 255, 0.03);
+                padding: 4px 10px;
+                border-radius: 9999px;
+                letter-spacing: 0.05em;
+                transition: all 0.3s ease;
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                cursor: default;
+            }
+
+            .country-chip:hover {
+                background: rgba(20, 184, 166, 0.1);
+                /* teal-500/10 */
+                border-color: rgba(20, 184, 166, 0.3);
+                color: #2dd4bf;
+                /* teal-400 */
+                transform: translateY(-1px);
+            }
+        </style>
+
+        <!-- Ride Across Japan Section -->
+        <section class="ride-across-japan py-32 relative bg-black/20 backdrop-blur-sm overflow-hidden">
+            <div class="container mx-auto px-4 max-w-screen-xl relative z-10">
+                <div class="text-center mb-16 space-y-4">
+                    <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Ride Across Japan</h2>
+                    <p class="text-xl text-teal-400 font-light tracking-wide">The line I drew with a bicycle.</p>
+                </div>
+
+                <div id="japan-map-container" class="relative w-full max-w-4xl mx-auto aspect-[4/3] md:aspect-[16/9]">
+                    <!-- Ride Stats Panel -->
+                    <div class="absolute bottom-6 left-6 space-y-6">
+                        <!-- Title -->
+                        <h3 class="text-xs font-semibold text-teal-400 uppercase tracking-widest">Ride Stats</h3>
+
+                        <!-- Main Stat -->
+                        <div>
+                            <div class="text-7xl font-bold text-white leading-none">17</div>
+                            <div class="text-base text-gray-400 mt-2">Days on the Road</div>
+                        </div>
+
+                        <!-- Additional Stats -->
+                        <div class="space-y-3 text-sm">
+                            <div>
+                                <div class="text-gray-500 text-xs mb-1">Distance</div>
+                                <div class="inline-block bg-white/5 border border-white/10 rounded-lg px-3 py-1.5">
+                                    <span class="text-white font-medium">2,000+ km</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-gray-500 text-xs mb-1">Coverage</div>
+                                <div class="inline-block bg-white/5 border border-white/10 rounded-lg px-3 py-1.5">
+                                    <span class="text-white font-medium">22 prefectures</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- D3.js & TopoJSON -->
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script src="https://unpkg.com/topojson@3"></script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const container = document.getElementById('japan-map-container');
+                if (!container) return;
+
+                const width = container.clientWidth;
+                const height = container.clientHeight;
+
+                const svg = d3.select('#japan-map-container')
+                    .append('svg')
+                    .attr('width', '100%')
+                    .attr('height', '100%')
+                    .attr('viewBox', `0 0 ${width} ${height}`);
+
+                // Define gradients and filters
+                const defs = svg.append('defs');
+
+                const gradient = defs.append('linearGradient')
+                    .attr('id', 'route-gradient')
+                    .attr('x1', '0%')
+                    .attr('y1', '0%')
+                    .attr('x2', '0%')
+                    .attr('y2', '100%'); // North to South gradient
+
+                gradient.append('stop').attr('offset', '0%').attr('stop-color', '#00f0ff');
+                gradient.append('stop').attr('offset', '100%').attr('stop-color', '#00d0b0');
+
+                const filter = defs.append('filter')
+                    .attr('id', 'glow-filter')
+                    .attr('x', '-20%').attr('y', '-20%').attr('width', '140%').attr('height', '140%');
+
+                filter.append('feGaussianBlur')
+                    .attr('stdDeviation', '3')
+                    .attr('result', 'blur');
+
+                filter.append('feComposite')
+                    .attr('in', 'SourceGraphic')
+                    .attr('in2', 'blur')
+                    .attr('operator', 'over');
+
+                // Route Coordinates (Hokkaido -> Kumamoto)
+                const routeCoordinates = [
+                    [141.3545, 43.0618], // Sapporo (Hokkaido)
+                    [140.7474, 40.8222], // Aomori
+                    [141.1545, 39.7020], // Morioka (Iwate)
+                    [140.8694, 38.2682], // Sendai (Miyagi)
+                    [140.4748, 37.7608], // Fukushima
+                    [139.8828, 36.5551], // Utsunomiya (Tochigi)
+                    [139.6455, 35.8616], // Saitama
+                    [139.6917, 35.6895], // Tokyo
+                    [139.6380, 35.4437], // Yokohama (Kanagawa)
+                    [138.3828, 34.9756], // Shizuoka
+                    [136.9066, 35.1815], // Nagoya (Aichi)
+                    [136.5057, 34.7186], // Tsu (Mie)
+                    [135.8540, 35.0178], // Otsu (Shiga)
+                    [135.7681, 35.0116], // Kyoto
+                    [135.5023, 34.6937], // Osaka
+                    [135.1955, 34.6901], // Kobe (Hyogo)
+                    [133.9198, 34.6555], // Okayama
+                    [132.4553, 34.3853], // Hiroshima
+                    [131.4737, 34.1783], // Yamaguchi
+                    [130.4017, 33.5902], // Fukuoka
+                    [130.7079, 32.8031]  // Kumamoto
+                ];
+
+                // Fetch Japan Map Data
+                // Using dataofjapan/land which is verified to work
+                d3.json('https://raw.githubusercontent.com/dataofjapan/land/master/japan.topojson')
+                    .then(japan => {
+                        console.log('Japan Map Data Loaded:', japan);
+                        // The key is 'japan' in this TopoJSON
+                        const features = topojson.feature(japan, japan.objects.japan).features;
+
+                        // Projection
+                        // Use fitExtent to automatically scale and center the map within the container with padding
+                        const projection = d3.geoMercator()
+                            .fitExtent([[20, 20], [width - 20, height - 20]], {
+                                type: "FeatureCollection",
+                                features: features
+                            });
+
+                        const path = d3.geoPath().projection(projection);
+
+                        // Draw Map
+                        svg.append('g')
+                            .selectAll('path')
+                            .data(features)
+                            .enter()
+                            .append('path')
+                            .attr('d', path)
+                            .attr('fill', 'rgba(255, 255, 255, 0.1)') // Visible semi-transparent white
+                            .attr('stroke', 'rgba(255, 255, 255, 0.2)') // Slightly brighter stroke
+                            .attr('stroke-width', 0.5);
+
+                        // Draw Route
+                        const routeLine = d3.line()
+                            .x(d => projection(d)[0])
+                            .y(d => projection(d)[1])
+                            .curve(d3.curveCatmullRom.alpha(0.5)); // Smooth curve
+
+                        const pathElement = svg.append('path')
+                            .datum(routeCoordinates)
+                            .attr('d', routeLine)
+                            .attr('fill', 'none')
+                            .attr('stroke', 'url(#route-gradient)')
+                            .attr('stroke-width', 3)
+                            .attr('stroke-linecap', 'round')
+                            .attr('stroke-linejoin', 'round')
+                            .attr('filter', 'url(#glow-filter)')
+                            .attr('class', 'route-path opacity-0');
+
+                        // Animation Logic
+                        const totalLength = pathElement.node().getTotalLength();
+
+                        pathElement
+                            .attr('stroke-dasharray', totalLength + ' ' + totalLength)
+                            .attr('stroke-dashoffset', totalLength);
+
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    pathElement.classed('opacity-0', false);
+                                    pathElement.transition()
+                                        .duration(6000)
+                                        .ease(d3.easeCubicInOut)
+                                        .attr('stroke-dashoffset', 0);
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        }, { threshold: 0.3 });
+
+                        observer.observe(container);
+
+                        // Add start and goal markers
+                        const startPoint = pathElement.node().getPointAtLength(0);
+                        const endPoint = pathElement.node().getPointAtLength(totalLength);
+
+                        // Start marker (Hokkaido)
+                        svg.append('circle')
+                            .attr('cx', startPoint.x)
+                            .attr('cy', startPoint.y)
+                            .attr('r', 6)
+                            .attr('fill', '#10b981') // Green for start
+                            .attr('stroke', '#ffffff')
+                            .attr('stroke-width', 2)
+                            .attr('filter', 'url(#glow-filter)')
+                            .attr('opacity', 0)
+                            .transition()
+                            .delay(6000)
+                            .duration(500)
+                            .attr('opacity', 1);
+
+                        // Goal marker (Kumamoto)
+                        svg.append('circle')
+                            .attr('cx', endPoint.x)
+                            .attr('cy', endPoint.y)
+                            .attr('r', 6)
+                            .attr('fill', '#f59e0b') // Orange for goal
+                            .attr('stroke', '#ffffff')
+                            .attr('stroke-width', 2)
+                            .attr('filter', 'url(#glow-filter)')
+                            .attr('opacity', 0)
+                            .transition()
+                            .delay(6000)
+                            .duration(500)
+                            .attr('opacity', 1);
+
+                        // Add animated dot that travels along the route
+                        const dotFilter = defs.append('filter')
+                            .attr('id', 'dot-glow')
+                            .attr('x', '-50%')
+                            .attr('y', '-50%')
+                            .attr('width', '200%')
+                            .attr('height', '200%');
+
+                        dotFilter.append('feGaussianBlur')
+                            .attr('stdDeviation', '2')
+                            .attr('result', 'blur');
+
+                        dotFilter.append('feComposite')
+                            .attr('in', 'SourceGraphic')
+                            .attr('in2', 'blur')
+                            .attr('operator', 'over');
+
+                        const travelingDot = svg.append('circle')
+                            .attr('r', 4)
+                            .attr('fill', '#00f0ff')
+                            .attr('filter', 'url(#dot-glow)')
+                            .attr('opacity', 0);
+
+                        // Function to animate the dot along the path
+                        function animateDot() {
+                            travelingDot
+                                .attr('opacity', 0.9)
+                                .transition()
+                                .duration(12000) // 12 seconds for one complete journey
+                                .ease(d3.easeLinear)
+                                .attrTween('transform', function () {
+                                    return function (t) {
+                                        const point = pathElement.node().getPointAtLength(t * totalLength);
+                                        travelingDot.attr('cx', point.x).attr('cy', point.y);
+                                        return null;
+                                    };
+                                })
+                                .on('end', animateDot); // Loop the animation
+                        }
+
+                        // Start the animation after the route line has been drawn
+                        setTimeout(() => {
+                            animateDot();
+                        }, 6500); // Start after route drawing animation completes
+                    })
+                    .catch(err => {
+                        console.error('Failed to load Japan map data:', err);
+                        // Fallback text if map fails
+                        d3.select('#japan-map-container')
+                            .append('div')
+                            .attr('class', 'flex items-center justify-center h-full text-gray-500')
+                            .text('Map data could not be loaded.');
+                    });
+
+                // Handle resize
+                window.addEventListener('resize', () => {
+                    const newWidth = container.clientWidth;
+                    const newHeight = container.clientHeight;
+                    svg.attr('viewBox', `0 0 ${newWidth} ${newHeight}`);
+                });
+            });
+        </script>
+
+        <!-- Timeline Section -->
+        <section class="py-20 px-4 relative overflow-hidden">
+            <div class="max-w-4xl mx-auto relative">
+                <h2 class="text-3xl font-bold text-center mb-16 tracking-wider">HISTORY</h2>
+
+                <!-- Central Line -->
+                <div id="timeline-line"
+                    class="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-teal-500/30 h-full origin-top scale-y-0 transition-transform duration-1000 ease-out">
+                </div>
+
+                <!-- Timeline Items -->
+                <div class="space-y-24 relative">
+
+                    <!-- Item 1 -->
+                    <div
+                        class="timeline-item relative flex items-center justify-between opacity-0 translate-y-8 transition-all duration-700 ease-out">
+                        <div class="w-5/12 text-right pr-8">
+                            <div class="text-teal-400 font-bold text-xl mb-1">2000.09.25</div>
+                            <div class="text-gray-300 text-lg">Born in Tokyo</div>
+                        </div>
+                        <div
+                            class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-teal-500 rounded-full border-4 border-gray-900 z-10 shadow-[0_0_10px_rgba(20,184,166,0.5)]">
+                        </div>
+                        <div class="w-5/12 pl-8"></div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div
+                        class="timeline-item relative flex items-center justify-between opacity-0 translate-y-8 transition-all duration-700 ease-out delay-200">
+                        <div class="w-5/12 text-right pr-8"></div>
+                        <div
+                            class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-teal-500 rounded-full border-4 border-gray-900 z-10 shadow-[0_0_10px_rgba(20,184,166,0.5)]">
+                        </div>
+                        <div class="w-5/12 pl-8">
+                            <div class="text-teal-400 font-bold text-xl mb-1">2016–2019</div>
+                            <div class="text-gray-300 text-lg">Kita-zono High School</div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div
+                        class="timeline-item relative flex items-center justify-between opacity-0 translate-y-8 transition-all duration-700 ease-out delay-400">
+                        <div class="w-5/12 text-right pr-8">
+                            <div class="text-teal-400 font-bold text-xl mb-1">2019–2023</div>
+                            <div class="text-gray-300 text-lg">Waseda University</div>
+                        </div>
+                        <div
+                            class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-teal-500 rounded-full border-4 border-gray-900 z-10 shadow-[0_0_10px_rgba(20,184,166,0.5)]">
+                        </div>
+                        <div class="w-5/12 pl-8"></div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div
+                        class="timeline-item relative flex items-center justify-between opacity-0 translate-y-8 transition-all duration-700 ease-out delay-600">
+                        <div class="w-5/12 text-right pr-8"></div>
+                        <div
+                            class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-teal-500 rounded-full border-4 border-gray-900 z-10 shadow-[0_0_10px_rgba(20,184,166,0.5)]">
+                        </div>
+                        <div class="w-5/12 pl-8">
+                            <div class="text-teal-400 font-bold text-xl mb-1">2023–Now</div>
+                            <div class="text-gray-300 text-lg">Salesforce (Sales)</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-border/40 bg-background py-12">
+        <div
+            class="container mx-auto px-4 max-w-screen-xl flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm text-muted-foreground">
+                &copy; 2025 Akagi Konosuke. All rights reserved.
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="text-muted-foreground hover:text-foreground transition-colors">
+                    <span class="sr-only">Instagram</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-instagram">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                    </svg>
+                </a>
+                <a href="#" class="text-muted-foreground hover:text-foreground transition-colors">
+                    <span class="sr-only">Twitter</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-twitter">
+                        <path
+                            d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                    </svg>
+                </a>
+                <a href="#" class="text-muted-foreground hover:text-foreground transition-colors">
+                    <span class="sr-only">Mail</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-mail">
+                        <rect width="20" height="16" x="2" y="4" rx="2" />
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 生きている日数と年齢を計算して表示
+        function calculateDaysAlive() {
+            const birthDate = new Date('2000-09-25T00:00:00');
+            const today = new Date();
+            const diffTime = Math.abs(today - birthDate);
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+            // 日数を表示
+            const daysAliveElement = document.getElementById('daysAlive');
+            if (daysAliveElement) {
+                daysAliveElement.textContent = diffDays.toLocaleString();
+            }
+
+            // 年齢を計算
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+
+            // 年齢を表示
+            const ageElement = document.getElementById('age');
+            if (ageElement) {
+                ageElement.textContent = age;
+            }
+        }
+
+        // ページ読み込み時に計算
+        calculateDaysAlive();
+
+        // 1時間ごとに更新
+        setInterval(calculateDaysAlive, 3600000);
+
+        // 背景動画の音量を小さく設定
+        const bgVideo = document.getElementById('bgVideo');
+        if (bgVideo) {
+            // 動画が読み込まれたらアンミュートして音量を設定
+            bgVideo.addEventListener('loadeddata', function () {
+                bgVideo.muted = false;
+                bgVideo.volume = 0.2; // 20%の音量
+
+                // 念のため再生を確実にする
+                bgVideo.play().catch(err => {
+                    console.log('自動再生がブロックされました:', err);
+                    // ユーザーのクリックで音声を有効化
+                    document.addEventListener('click', function enableAudio() {
+                        bgVideo.muted = false;
+                        bgVideo.volume = 0.2;
+                        bgVideo.play();
+                        document.removeEventListener('click', enableAudio);
+                    }, { once: true });
+                });
+            });
+        }
+
+        // 画像リスト
+        const images = [
+            "./images/DSCF2902.jpg",
+            "./images/DSCF2913.JPG",
+            "./images/IMG_1332.JPG",
+            "./images/IMG_1502.JPG",
+            "./images/IMG_3365.jpg",
+            "./images/IMG_3728.jpg",
+            "./images/IMG_4177.JPG",
+            "./images/IMG_5599.jpg",
+            "./images/IMG_9100.jpg",
+            "./images/IMG_9901.JPG",
+            "./images/IMG_4053 のコピー.JPG",
+            "./images/IMG_4377.JPG",
+            "./images/IMG_4556.JPG"
+        ];
+
+        // 画像のプリロード（事前読み込み）でラグを解消
+        const preloadedImages = [];
+        images.forEach(src => {
+            const img = new Image();
+            img.src = src;
+            preloadedImages.push(img);
+        });
+
+        // ギャラリーの画像要素を取得
+        const galleryImages = document.querySelectorAll('.gallery-image');
+
+        // ランダムに画像を入れ替える関数（改善版：クロスフェード）
+        function shuffleGallery() {
+            // 変更するスロットをランダムに1つ選ぶ
+            const slotIndex = Math.floor(Math.random() * galleryImages.length);
+            const imgElement = galleryImages[slotIndex];
+            const container = imgElement.parentElement;
+
+            // 現在表示されている全ての画像のリストを取得
+            const currentDisplayedImages = Array.from(galleryImages).map(img => img.getAttribute('src'));
+
+            // まだ表示されていない（重複しない）画像の候補リストを作成
+            const availableImages = images.filter(src => !currentDisplayedImages.includes(src));
+
+            // 候補がない場合（画像総数が表示枠数より少ない場合など）は、
+            // 少なくとも「このスロットの現在の画像」以外から選ぶようにフォールバック
+            let newImageSrc;
+            if (availableImages.length > 0) {
+                newImageSrc = availableImages[Math.floor(Math.random() * availableImages.length)];
+            } else {
+                do {
+                    newImageSrc = images[Math.floor(Math.random() * images.length)];
+                } while (newImageSrc === imgElement.getAttribute('src'));
+            }
+
+            // 新しい画像を事前に完全に読み込む
+            const tempImg = new Image();
+            tempImg.onload = function () {
+                // 新しい画像要素を作成（クロスフェード用）
+                const newImg = document.createElement('img');
+                newImg.src = newImageSrc;
+                newImg.alt = imgElement.alt;
+                newImg.className = imgElement.className;
+                newImg.style.position = 'absolute';
+                newImg.style.top = '0';
+                newImg.style.left = '0';
+                newImg.style.opacity = '0';
+
+                // コンテナに新しい画像を追加
+                container.appendChild(newImg);
+
+                // 少し待ってからフェード開始（DOMに追加されるのを待つ）
+                setTimeout(() => {
+                    // 古い画像をフェードアウト、新しい画像をフェードイン
+                    imgElement.style.opacity = '0';
+                    newImg.style.opacity = '1';
+
+                    // フェード完了後、古い画像を削除して新しい画像を置き換え
+                    setTimeout(() => {
+                        imgElement.src = newImageSrc;
+                        imgElement.style.opacity = '1';
+                        container.removeChild(newImg);
+                    }, 2000);
+                }, 50);
+            };
+            // 読み込み開始
+            tempImg.src = newImageSrc;
+        }
+
+        // 10秒ごとに画像を切り替える
+        setInterval(shuffleGallery, 10000);
+
+        // 3D Globe初期化（Globe.GL使用）
+        let globeRetryCount = 0;
+        function initGlobe() {
+            const container = document.getElementById('globeViz');
+            if (!container) {
+                console.error('Globe container not found');
+                return;
+            }
+
+            if (typeof Globe === 'undefined') {
+                globeRetryCount++;
+                if (globeRetryCount > 50) {
+                    console.error('Globe.GL failed to load after multiple attempts.');
+                    return;
+                }
+                console.log('Globe.GL not loaded, retrying...');
+                setTimeout(initGlobe, 100);
+                return;
+            }
+
+            // 訪れた国リスト (GeoJSONのADMIN名と一致させる)
+            const visitedCountries = [
+                'Japan', 'Thailand', 'India', 'Philippines', 'United States of America',
+                'Egypt', 'Turkey', 'Greece', 'Italy', 'Germany', 'France', 'Finland',
+                'United Kingdom', 'Hungary', 'Czechia', 'Belgium', 'Netherlands', 'Spain',
+                'Bolivia', 'Peru', 'Laos', 'Malta', 'Austria', 'Switzerland', 'Vatican', 'Guam'
+            ];
+
+            try {
+                // GeoJSONデータを取得
+                fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
+                    .then(res => res.json())
+                    .then(countries => {
+                        let hoverD = null;
+
+                        const world = Globe()
+                            (container)
+                            .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
+                            .backgroundColor('rgba(0,0,0,0)')
+                            .polygonsData(countries.features.filter(d => d.properties.ADMIN !== 'Antarctica'))
+                            .polygonStrokeColor(() => '#111')
+                            .polygonLabel(({ properties: d }) => `
+                                <div class="bg-black/80 text-white px-2 py-1 rounded border border-white/20 text-sm font-bold shadow-[0_0_10px_rgba(0,255,255,0.5)]">
+                                    ${d.ADMIN}
+                                </div>
+                            `)
+                            .onPolygonHover(d => {
+                                hoverD = d;
+                                container.style.cursor = d ? 'pointer' : 'default';
+                            })
+                            .width(container.clientWidth)
+                            .height(container.clientHeight);
+
+                        const controls = world.controls();
+                        controls.autoRotate = true;
+                        controls.autoRotateSpeed = 0.5;
+                        controls.enableZoom = true;
+
+                        // マウス操作時は自動回転を停止し、操作終了後に再開
+                        let rotateTimeout;
+                        controls.addEventListener('start', () => {
+                            controls.autoRotate = false;
+                            clearTimeout(rotateTimeout);
+                        });
+                        controls.addEventListener('end', () => {
+                            rotateTimeout = setTimeout(() => {
+                                controls.autoRotate = true;
+                            }, 3000);
+                        });
+
+                        // レスポンシブ対応
+                        window.addEventListener('resize', () => {
+                            world.width(container.clientWidth);
+                            world.height(container.clientHeight);
+                        });
+
+                        // アニメーションループ（呼吸エフェクト）
+                        function animate() {
+                            // 呼吸の計算 (4秒周期)
+                            const time = Date.now();
+                            const period = 4000;
+                            const t = (time % period) / period * Math.PI * 2;
+                            const breath = (Math.sin(t) + 1) / 2; // 0.0 ~ 1.0
+
+                            // 輝度の計算 (0.6 ~ 0.9)
+                            const intensity = 0.6 + (0.3 * breath);
+                            const glowColor = `rgba(0, 255, 255, ${intensity})`;
+                            const sideColor = `rgba(0, 200, 255, ${intensity * 0.5})`;
+
+                            // 高度の計算 (0.02 ~ 0.025) - わずかに上下させる
+                            const baseAlt = 0.02;
+                            const breathAlt = baseAlt + (0.005 * breath);
+
+                            world.polygonCapColor(d => {
+                                const isVisited = visitedCountries.includes(d.properties.ADMIN);
+                                if (d === hoverD) {
+                                    return isVisited ? 'rgba(0, 255, 255, 1.0)' : 'rgba(255, 255, 255, 0.3)';
+                                }
+                                return isVisited ? glowColor : 'rgba(200, 200, 200, 0.05)';
+                            })
+                                .polygonSideColor(d => {
+                                    const isVisited = visitedCountries.includes(d.properties.ADMIN);
+                                    return isVisited ? sideColor : 'rgba(0, 0, 0, 0)';
+                                })
+                                .polygonAltitude(d => {
+                                    const isVisited = visitedCountries.includes(d.properties.ADMIN);
+                                    if (d === hoverD && isVisited) return 0.04;
+                                    return isVisited ? breathAlt : 0.005;
+                                });
+
+                            controls.update();
+                            requestAnimationFrame(animate);
+                        }
+                        animate();
+
+                        console.log('Globe initialized successfully with GeoJSON');
+                    })
+                    .catch(err => {
+                        console.error('Failed to load GeoJSON:', err);
+                    });
+
+            } catch (error) {
+                console.error('Error initializing globe:', error);
+            }
+        };
+
+        // ページ読み込み後に地球儀を初期化
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initGlobe);
+        } else {
+            initGlobe();
+        }
+        // Timeline Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.id === 'timeline-line') {
+                            entry.target.classList.remove('scale-y-0');
+                        } else if (entry.target.classList.contains('timeline-item')) {
+                            entry.target.classList.remove('opacity-0', 'translate-y-8');
+                        }
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const timelineLine = document.getElementById('timeline-line');
+            if (timelineLine) observer.observe(timelineLine);
+
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach(item => observer.observe(item));
+        });
+    </script>
+</body>
+
+</html>
